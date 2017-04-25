@@ -29,7 +29,7 @@ function draw() {  //this loop will run forever
 function moveBall() { 
   ballX = ballX + ballSpeedX;//changes the balls x and y positions
   ballY = ballY + ballSpeedY;//so that they can move
-  prvarln("ballSpeedX: " + ballSpeedX + ", ballSpeedY: " + ballSpeedY);//will prvar text in console //indicating the speed of the ball
+  prvarln("ballSpeedX: " + ballSpeedX + ", ballSpeedY: " + ballSpeedY);//will prvar text in console indicating the speed of the ball
 }
 
 function checkCollide() {
@@ -60,7 +60,7 @@ function drawBall() {
 function drawPaddle() {
   stroke(paddleColor);//the outlines color will be set to paddleColor’s value
   strokeWeight(4);//thickens the outline
-  rect(mouseX, height-paddleHeight-4, 200, paddleHeight);//draws a rectangle that follow the //mouse
+  rect(mouseX, height-paddleHeight-4, 200, paddleHeight);//draws a rectangle that follow the mouse
 }
 
 function mousePressed() {//when the mouse is pressed
