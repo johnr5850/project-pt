@@ -5,8 +5,8 @@ int ballSpeedY = 5;
 int paddleHeight = 30;//makes the original paddle height 30
 int paddleColor; 
 int transpColor = 255;
-int autoX;
-int autoY;
+int autoX = 30;
+int autoY = 80;
 
 void setup() {
   size(800, 400);//sets the canvas size to 800 by 600
@@ -31,17 +31,16 @@ void checkCollide() {
   if (ballX < 0 || ballX > width) { //checks if the ball hits the side of the canvas
     ballSpeedX = ballSpeedX * -1;//will reverse the balls direction
   }
-  if (ballY < 0) { //checks if the ball hits the top of the canvas
+  if (ballY < 0 || (ballY < autoY && ballX < autoX)) { //checks if the ball hits the top of the canvas + extra paddle from bottom
     ballSpeedY = ballSpeedY * -1;//reverses the balls direction
+  }
+  if (ballY < 80 && ballX) {
   }
   if (ballY > height-paddleHeight) { //checks if the ball 
     if (ballX > mouseX && ballX < mouseX + 200) { //is hitting the paddle
       ballSpeedY = ballSpeedY * -1;//reverses the balls direction
       transpColor = transpColor - 40; //decrements transparancy levels of the ball
-      transpColor = constrain(transpColor,5,255);
-      }
-    else if () {
-        
+      transpColor = constrain(transpColor,50,255);
       }
     else {//if the ball doesn’t hit the paddle
       text("GAME OVER!", 375, 200);//prints GAME OVER at the center of the canvas
@@ -57,7 +56,8 @@ void drawPaddle() {
   stroke(paddleColor);//the outlines color will be set to paddleColor’s value
   strokeWeight(4);//thickens the outline
   rect(mouseX, height-paddleHeight-4, 200, paddleHeight);//draws a rectangle that follow the mouse
-  rect(30,80,200,paddleHeight);
+  rect(autoX,autoY,200,paddleHeight);
 }
+
 
 
