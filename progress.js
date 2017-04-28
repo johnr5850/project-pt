@@ -14,14 +14,14 @@ void setup() {
   ballX = width/2;//when the code starts, the ball will be positioned in the middle
   ballY = height/2;//of the canvas
   time = millis();
-  fill(0,0,0,transpColor);
 }
 void draw() {  //this loop will run forever
   background(255);//sets the background color to grey
   moveBall();//runs function moveBall
-  checkCollide();//checks collision from the ball
   drawPaddle();//draws the moveable paddle
   drawBall();//draws the ball
+  checkCollide();//checks collision from the ball
+  fill(0,0,0,transpColor);
 }
 void moveBall() { 
   ballX = ballX + ballSpeedX;//changes the balls x and y positions
@@ -38,7 +38,7 @@ void checkCollide() {
   if (ballY > 350) { //checks if the ball 
     if (ballX > mouseX - 100 && ballX < mouseX + 100) { //is hitting the paddle
       ballSpeedY = ballSpeedY * -1;//reverses the balls direction
-      transpColor = transpColor - 25; //decrements transparancy levels of the ball
+      transpColor = transpColor - 100; //decrements transparancy levels of the ball
       transpColor = constrain(transpColor,5,255);
       }
     else {//if the ball doesn’t hit the paddle
