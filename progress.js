@@ -14,15 +14,14 @@ void setup() {
   ballX = width/2;//when the code starts, the ball will be positioned in the middle
   ballY = height/2;//of the canvas
   time = millis();
+  fill(0,0,0,transpColor);
 }
 void draw() {  //this loop will run forever
-  fill(0,0,0,transpColor);
   background(255);//sets the background color to grey
   moveBall();//runs function moveBall
   checkCollide();//checks collision from the ball
   drawPaddle();//draws the moveable paddle
   drawBall();//draws the ball
-  
 }
 void moveBall() { 
   ballX = ballX + ballSpeedX;//changes the balls x and y positions
@@ -39,13 +38,13 @@ void checkCollide() {
   if (ballY > 350) { //checks if the ball 
     if (ballX > mouseX - 100 && ballX < mouseX + 100) { //is hitting the paddle
       ballSpeedY = ballSpeedY * -1;//reverses the balls direction
-      transpColor = transpColor - 40; //decrements transparancy levels of the ball
-      transpColor = constrain(transpColor,50,255);
+      transpColor = transpColor - 25; //decrements transparancy levels of the ball
+      transpColor = constrain(transpColor,5,255);
       }
     else {//if the ball doesn’t hit the paddle
-      strokeWeight(4);
+      fill(0,0,0,255);
       int timer = millis();
-      text("GAME OVER! Your Time Was: "+ (float(timer)/1000), 375, 200);//prints GAME OVER at the center of the canvas
+      text("GAME OVER! Your Time Was: "+ (float(timer)/1000) + " seconds.", 300, 200);//prints GAME OVER at the center of the canvas
       noLoop();//ends the code
     }
   }
@@ -60,4 +59,3 @@ void drawPaddle() {
   rectMode(CENTER);
   rect(mouseX, height-paddleHeight-4, 200, paddleHeight);//draws a rectangle that follow the mouse
 }
-
