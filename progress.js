@@ -38,7 +38,7 @@ void checkCollide() {
   if (ballY > 350) { //checks if the ball 
     if (ballX > mouseX - 100 && ballX < mouseX + 100) { //is hitting the paddle
       ballSpeedY = ballSpeedY * -1;//reverses the balls direction
-      transpColor = transpColor - 100; //decrements transparancy levels of the ball
+      transpColor = transpColor - 30; //decrements transparancy levels of the ball
       transpColor = constrain(transpColor,5,255);
       }
     else {//if the ball doesn’t hit the paddle
